@@ -24,7 +24,7 @@ public class FilmRepetoire {
     }
     public void handleInput(String input) {
         switch (input) {
-            case "asd"
+            case "asd":
                 break;
         }
     }
