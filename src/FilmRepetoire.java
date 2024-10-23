@@ -1,9 +1,36 @@
 public class FilmRepetoire {
+    private UserInterface ui;
+
+
+    public FilmRepetoire() {
+        ui = new UserInterface();
+    }
+
+    public void playMovie() {
+        ui.displayMessage("Welcome to your own personlized movie repetoire.");
+    }
+
+    public void displayMenu() {
+        boolean running = true;
+        Inventory inventory = new Inventory();
+        while (running) {
+            String input = ui.getInput("Command: ");
+            if (input.equals("quit")) {
+                break;
+            }
+            handleInput(input);
+        }
+
+    }
+    public void handleInput(String input) {
+        switch (input) {
+            case "asd"
+                break;
+        }
+    }
+
 
 }
-
-
-
 
 
 //As a (Role) I want (Some function) so that (some reason) ((USER STORY))
