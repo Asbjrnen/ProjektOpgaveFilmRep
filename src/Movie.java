@@ -35,6 +35,25 @@ public class Movie {
     public String getGenre() {
         return genre;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setDirector(String director) {
+        this.director = director;
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public void setIsInColor(String isInColor) {
+        this.isInColor = isInColor;
+    }
+    public void setLengthInMinutes(int lengthInMinutes) {
+        this.lengthInMinutes = lengthInMinutes;
+    }
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
 
     @Override
     public String toString(){
