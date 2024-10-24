@@ -13,5 +13,8 @@ public class Controller {
     public void removeMovie(String input){
         movieCollection.removeMovieFromList(input);
     }
+    public void editMovieFromList(String input){
+        movieCollection.editMovieFromList(input);
+    }
 
 }

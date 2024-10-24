@@ -62,26 +62,30 @@ public class MovieCollection {
                 if (!newDirector.isEmpty()) {
                     i.setDirector(newDirector);
                 }
-                System.out.println("year: " + i.getYear());
-                int newYear = scanner.nextInt();
-                if (newYear != i.getYear()) {
-                    i.setYear(newYear);
-                }
                 System.out.println("Is it in colour: " + i.getIsInColor());
                 String newIsInColor = scanner.nextLine();
                 if (!newIsInColor.isEmpty()) {
                     i.setIsInColor(newIsInColor);
-                }
-                System.out.println("Length in minutes: " + i.getLengthInMinutes());
-                int newLengthInMinutes = scanner.nextInt();
-                if (newLengthInMinutes != i.getLengthInMinutes()) {
-                    i.setLengthInMinutes(newLengthInMinutes);
                 }
                 System.out.println("Genre: " + i.getGenre());
                 String newGenre = scanner.nextLine();
                 if (!newGenre.isEmpty()) {
                     i.setGenre(newGenre);
                 }
+                System.out.println("year: " + i.getYear());
+                String newYear = scanner.nextLine();
+                if (!newYear.isEmpty()) {
+                    int ko = Integer.parseInt(newYear);
+                    i.setYear(ko);
+
+                }
+                System.out.println("Length in minutes: " + i.getLengthInMinutes());
+                String newLengthInMinutes = scanner.nextLine();
+                if (!newLengthInMinutes.isEmpty()) {
+                    int minuteChange = Integer.parseInt(newLengthInMinutes);
+                    i.setLengthInMinutes(minuteChange);
+                }
+
             }
         }
         scanner.close();

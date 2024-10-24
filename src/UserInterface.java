@@ -53,7 +53,11 @@ public class UserInterface {
                     System.out.println("Enter title:");
                     controller.findMovie(scanner.nextLine());
                 }
-//                case 4-> // editfunktion
+                case 4->
+                {
+                    System.out.println("Enter title of the movie you want to edit:");
+                    controller.editMovieFromList(scanner.nextLine());
+                }
                 case 5->
                 {
                     System.out.println("Enter title:");
