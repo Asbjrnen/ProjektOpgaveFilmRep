@@ -88,7 +88,6 @@ public class MovieCollection {
 
             }
         }
-        scanner.close();
     }
 }
 
