@@ -4,7 +4,7 @@ public class UserInterface {
     private Scanner scanner;
 
     public UserInterface() {
-        private scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
     }
 
 
