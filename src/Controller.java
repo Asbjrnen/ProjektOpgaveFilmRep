@@ -7,5 +7,11 @@ public class Controller {
     public void printMovieList(){
         movieCollection.printMovieList();
     }
+    public void findMovie(String input){
+        movieCollection.findMovie(input);
+    }
+    public void removeMovie(String input){
+        movieCollection.removeMovieFromList(input);
+    }
 
 }
