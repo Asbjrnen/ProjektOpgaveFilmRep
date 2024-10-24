@@ -38,7 +38,7 @@ public class Movie {
 
     @Override
     public String toString(){
-        return "Name: " + name + "director: " + director + "year: " + year + "isInColor: " + isInColor + "lengthInMinutes: " + lengthInMinutes + "Genre: " + genre;
+        return "Name: " + name + ". Director: " + director + ". Year: " + year + ". Color: " + isInColor + ". Length: " + lengthInMinutes + ". Genre: " + genre;
     }
 
 }
