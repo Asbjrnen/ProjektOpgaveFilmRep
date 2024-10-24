@@ -1,4 +1,4 @@
-public class Movies {
+public class Movie {
 
     private String name;
     private String director;
@@ -9,7 +9,7 @@ public class Movies {
 
 
 
-    public Movies(String name, String director, int year, String isInColor, int lengthInMinutes, String genre) {
+    public Movie(String name, String director, int year, String isInColor, int lengthInMinutes, String genre) {
         this.name = name;
         this.director = director;
         this.year = year;
@@ -34,6 +34,11 @@ public class Movies {
     }
     public String getGenre() {
         return genre;
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + name + "director: " + director + "year: " + year + "isInColor: " + isInColor + "lengthInMinutes: " + lengthInMinutes + "Genre: " + genre;
     }
 
 }

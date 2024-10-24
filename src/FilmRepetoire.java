@@ -12,7 +12,7 @@ public class FilmRepetoire {
 
     public void displayMenu() {
         boolean running = true;
-        Inventory inventory = new Inventory();
+        MovieCollection movieCollection = new MovieCollection();
         while (running) {
             String input = ui.getInput("Command: ");
             if (input.equals("quit")) {
