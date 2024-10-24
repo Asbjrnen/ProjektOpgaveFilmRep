@@ -13,4 +13,7 @@ public class MovieCollection {
             System.out.println(counter + ". " + i);
         }
     }
+    public void findMovie(String input){
+
+    }
 }
