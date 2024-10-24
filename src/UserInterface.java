@@ -2,18 +2,18 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    public void startProgram(){
+    public void startProgram() {
         Controller controller = new Controller();
         Scanner scanner = new Scanner(System.in);
 
-        Movie movie1 = new Movie("koen ko","john",1995,"yes",5,"horror");
-        Movie movie2 = new Movie("adolf body","john hitler",1965,"no",100,"documentary");
+        Movie movie1 = new Movie("koen ko", "john", 1995, "yes", 5, "horror");
+        Movie movie2 = new Movie("adolf body", "john hitler", 1965, "no", 100, "documentary");
         controller.addMovie(movie1);
         controller.addMovie(movie2);
 
         boolean running = true;
 
-        while (running){
+        while (running) {
             System.out.println("Welcome to your own personalized movie collection\n");
             System.out.println("1. Add movie");
             System.out.println("2. Show all movies");
@@ -26,9 +26,8 @@ public class UserInterface {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-            switch (choice){
-                case 1 ->
-                {
+            switch (choice) {
+                case 1 -> {
                     System.out.println("Write movie name: ");
                     String name = scanner.nextLine();
                     System.out.println("Write movie director: ");
@@ -43,27 +42,24 @@ public class UserInterface {
                     System.out.println("Write movie genre: ");
                     String genre = scanner.nextLine();
 
-                    Movie movie = new Movie(name,director,year,isInColor,movieLength,genre);
+                    Movie movie = new Movie(name, director, year, isInColor, movieLength, genre);
                     controller.addMovie(movie);
                 }
 
-                case 2-> controller.printMovieList();
-                case 3->
-                {
+                case 2 -> controller.printMovieList();
+                case 3 -> {
                     System.out.println("Enter title:");
                     controller.findMovie(scanner.nextLine());
                 }
-                case 4->
-                {
+                case 4 -> {
                     System.out.println("Enter title of the movie you want to edit:");
                     controller.editMovieFromList(scanner.nextLine());
                 }
-                case 5->
-                {
+                case 5 -> {
                     System.out.println("Enter title:");
                     controller.removeMovie(scanner.nextLine());
                 }
-                case 6-> running = false;
+                case 6 -> running = false;
             }
         }
 
