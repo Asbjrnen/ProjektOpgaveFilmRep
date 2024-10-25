@@ -4,6 +4,10 @@ import java.util.Scanner;
 public class MovieCollection {
     private ArrayList<Movie> movieArrayList = new ArrayList<Movie>();
 
+    public ArrayList<Movie> getMovieArrayList() {
+        return movieArrayList;
+    }
+
     public void addMovie(Movie movie) {
         movieArrayList.add(movie);
     }
