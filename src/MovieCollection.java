@@ -49,6 +49,7 @@ public class MovieCollection {
         }
     }
 
+    //Stop using scanner, make method in ui
     public void editMovieFromList(String input) {
         Scanner scanner = new Scanner(System.in);
         for (Movie i : movieArrayList) {
