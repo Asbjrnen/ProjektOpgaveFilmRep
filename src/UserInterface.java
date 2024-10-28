@@ -6,11 +6,6 @@ public class UserInterface {
         Controller controller = new Controller();
         Scanner scanner = new Scanner(System.in);
 
-        Movie movie1 = new Movie("koen ko", "john", 1995, "yes", 5, "horror");
-        Movie movie2 = new Movie("adolf body", "john hitler", 1965, "no", 100, "documentary");
-        controller.addMovie(movie1);
-        controller.addMovie(movie2);
-
         boolean running = true;
 
         while (running) {
