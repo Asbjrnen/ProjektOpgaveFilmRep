@@ -17,8 +17,17 @@ public class Controller {
         movieCollection.removeMovieFromList(input);
     }
 
-    public void editMovieFromList(String input) {
-        movieCollection.editMovieFromList(input);
+//    public void editMovieFromList(String input) {
+//        movieCollection.editMovieFromList(input);
+//    }
+
+    public Movie editMovieFromList(String movieTitle) {
+        for (Movie movie : movieCollection.getMovieArrayList()){
+            if (movie.getName().equalsIgnoreCase(movieTitle)){
+                return movie;
+            }
+        }
+return null;
     }
 
 }

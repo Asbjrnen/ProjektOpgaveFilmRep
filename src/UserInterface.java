@@ -1,10 +1,24 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 
 public class UserInterface {
+    private final Controller controller;
+    private final Scanner scanner;
+    private final MovieCollection movieCollection;
+
+    public UserInterface() {
+        this.controller = new Controller();
+        this.scanner = new Scanner(System.in);
+        this.movieCollection = new MovieCollection();
+    }
 
     public void startProgram() {
         Controller controller = new Controller();
         Scanner scanner = new Scanner(System.in);
+        Movie Koen = new Movie("Koen","hans",1900,"yes",60,"Romance");
+        movieCollection.addMovie(Koen);
 
         boolean running = true;
 
@@ -41,14 +55,14 @@ public class UserInterface {
                     controller.addMovie(movie);
                 }
 
-                case 2 -> controller.printMovieList();
+                case 2 -> System.out.println(controller.printMovieList());
                 case 3 -> {
                     System.out.println("Enter title:");
                     controller.findMovie(scanner.nextLine());
                 }
                 case 4 -> {
                     System.out.println("Enter title of the movie you want to edit:");
-                    controller.editMovieFromList(scanner.nextLine());
+                    editMovieFromList();
                 }
                 case 5 -> {
                     System.out.println("Enter title:");
@@ -57,7 +71,59 @@ public class UserInterface {
                 case 6 -> running = false;
             }
         }
-
     }
 
-}
+        private void editMovieFromList() {
+            System.out.println("Choose the title of the movie you want to edit:");
+
+            scanner.nextLine();
+            String newTitle = scanner.nextLine();
+            Movie movieEdit = controller.editMovieFromList(newTitle);
+
+                    if (!newTitle.isEmpty()) {
+                        movieEdit.setName(newTitle);
+                    }
+                    System.out.println("Director: ");
+                    String newDirector = scanner.nextLine();
+                    if (!newDirector.isEmpty()) {
+                        movieEdit.setDirector(newDirector);
+                    }
+                    System.out.println("Is it in colour: ");
+                    String newIsInColor = scanner.nextLine();
+                    if (!newIsInColor.isEmpty()) {
+                        movieEdit.setIsInColor(newIsInColor);
+                    }
+
+                    System.out.println("Genre: ");
+                    String newGenre = scanner.nextLine();
+                    if (!newGenre.isEmpty()) {
+                        movieEdit.setGenre(newGenre);
+                    }
+                    System.out.println("year: ");
+                    String newYear = scanner.nextLine();
+                    if (!newYear.isEmpty()) {
+                        int ko = Integer.parseInt(newYear);
+                        movieEdit.setYear(ko);
+                        System.out.println("You did not write a number!");
+                    }
+                System.out.println("Length in minutes: ");
+                String newLengthInMinutes = scanner.nextLine();
+                if (!newLengthInMinutes.isEmpty()) {
+                    int minuteChange = Integer.parseInt(newLengthInMinutes);
+                    movieEdit.setLengthInMinutes(minuteChange);
+                    System.out.println("You did not write a number!");
+                }
+
+
+            }
+
+        }
+
+
+
+//            for (Movie i : ) {
+//        if (i.getName().toLowerCase().contains(scanner)) {
+//        System.out.println("Found movie!");
+//                    System.out.println(i);
+//                    System.out.println("Please change the data you would like to edit and press ENTER");
+//                    System.out.println("Title: " + i.getName());
