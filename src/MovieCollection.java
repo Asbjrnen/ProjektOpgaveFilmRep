@@ -60,7 +60,12 @@ public class MovieCollection {
                 System.out.println("Title: " + i.getName());
                 String newTitle = scanner.nextLine();
                 if (!newTitle.isEmpty()) {
-                    i.setName(newTitle);
+                    try{
+                        i.setName(newTitle);
+                    } catch (Exception e){
+                        System.out.println("Wrong input, be more specific");
+                    }
+
                 }
                 System.out.println("Director: " + i.getDirector());
                 String newDirector = scanner.nextLine();
