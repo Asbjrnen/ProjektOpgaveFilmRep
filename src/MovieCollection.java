@@ -16,13 +16,12 @@ public class MovieCollection {
         movieArrayList.remove(movie);
     }
 
-    public String printMovieList() {
+    public void printMovieList() {
         int counter = 0;
         for (Movie i : movieArrayList) {
             counter++;
-            return counter + ". " + i;
+            System.out.println(counter + ". " + i);
         }
-        return "";
     }
 
     public void findMovie(String input) {
