@@ -16,23 +16,30 @@ public class MovieCollection {
         movieArrayList.remove(movie);
     }
 
-    public void printMovieList() {
+    public String printMovieList() {
         int counter = 0;
+        String stringprint = "";
         for (Movie movie : movieArrayList) {
             counter++;
-            System.out.println(counter + ". " + movie);
+             stringprint  += counter + ". " + movie.toString() + "\n";
         }
+        if (movieArrayList.isEmpty()) {
+            return "movielist is empty";
+        }
+        return  stringprint;
     }
 
-    public void findMovie(String input) {
+    public ArrayList<Movie> findMovie(String input) {
+        ArrayList<Movie> foundMovies = new ArrayList<Movie>();
         for (Movie movie : movieArrayList) {
-            if (movie.getName().toLowerCase().contains(input)) {
-                System.out.println("Found movie!");
-                System.out.println(movie);
-            } else {
-                System.out.println("Error: movie not found, be more specific");
+            if (movie.getName().contains(input)) {
+                foundMovies.add(movie);
             }
         }
+        if (!foundMovies.isEmpty()){
+            return foundMovies;
+        }
+        return null;
     }
 
     public void removeMovieFromList(String input) {
@@ -52,10 +59,9 @@ public class MovieCollection {
     //Stop using scanner, make method in ui
     public Movie editMovieFromList(String movieName) {
         for (Movie movie : movieArrayList) {
-            if (movie.getName().toLowerCase().equals(movieName)) {
+            if (movie.getName().toLowerCase().equalsIgnoreCase(movieName)) {
                 return movie;
                 }
-
             }
         return null;
         }

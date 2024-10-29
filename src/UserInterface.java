@@ -17,8 +17,8 @@ public class UserInterface {
     public void startProgram() {
         Controller controller = new Controller();
         Scanner scanner = new Scanner(System.in);
-        Movie Koen = new Movie("Koen","hans",1900,"yes",60,"Romance");
-        movieCollection.addMovie(Koen);
+        Movie Koen = new Movie("Koen", "hans", 1900, "yes", 60, "Romance");
+        controller.addMovie(Koen);
 
         boolean running = true;
 
@@ -57,11 +57,10 @@ public class UserInterface {
 
                 case 2 -> System.out.println(controller.printMovieList());
                 case 3 -> {
-                    System.out.println("Enter title:");
-                    controller.findMovie(scanner.nextLine());
+                    System.out.println("Enter title");
+                    System.out.println(controller.findMovie(scanner.nextLine()));
                 }
                 case 4 -> {
-                    System.out.println("Enter title of the movie you want to edit:");
                     editMovieFromList();
                 }
                 case 5 -> {
@@ -73,52 +72,57 @@ public class UserInterface {
         }
     }
 
-        private void editMovieFromList() {
-            System.out.println("Choose the title of the movie you want to edit:");
+    private void editMovieFromList() {
+        System.out.println("Enter the title of the movie you want to edit:");
 
-            scanner.nextLine();
+        String searchTitle = scanner.nextLine();
+        System.out.println(controller.findMovie(searchTitle));
+        Movie movieEdit = controller.editMovieFromList(searchTitle);
+
+        if (controller.editMovieFromList(searchTitle) != null) {
+            System.out.println("Title:");
             String newTitle = scanner.nextLine();
-            Movie movieEdit = controller.editMovieFromList(newTitle);
 
-                    if (!newTitle.isEmpty()) {
-                        movieEdit.setName(newTitle);
-                    }
-                    System.out.println("Director: ");
-                    String newDirector = scanner.nextLine();
-                    if (!newDirector.isEmpty()) {
-                        movieEdit.setDirector(newDirector);
-                    }
-                    System.out.println("Is it in colour: ");
-                    String newIsInColor = scanner.nextLine();
-                    if (!newIsInColor.isEmpty()) {
-                        movieEdit.setIsInColor(newIsInColor);
-                    }
-
-                    System.out.println("Genre: ");
-                    String newGenre = scanner.nextLine();
-                    if (!newGenre.isEmpty()) {
-                        movieEdit.setGenre(newGenre);
-                    }
-                    System.out.println("year: ");
-                    String newYear = scanner.nextLine();
-                    if (!newYear.isEmpty()) {
-                        int ko = Integer.parseInt(newYear);
-                        movieEdit.setYear(ko);
-                        System.out.println("You did not write a number!");
-                    }
-                System.out.println("Length in minutes: ");
-                String newLengthInMinutes = scanner.nextLine();
-                if (!newLengthInMinutes.isEmpty()) {
-                    int minuteChange = Integer.parseInt(newLengthInMinutes);
-                    movieEdit.setLengthInMinutes(minuteChange);
-                    System.out.println("You did not write a number!");
-                }
-
-
+            if (!newTitle.isEmpty()) {
+                movieEdit.setName(newTitle);
+            }
+            System.out.println("Director: ");
+            String newDirector = scanner.nextLine();
+            if (!newDirector.isEmpty()) {
+                movieEdit.setDirector(newDirector);
+            }
+            System.out.println("Is it in colour: ");
+            String newIsInColor = scanner.nextLine();
+            if (!newIsInColor.isEmpty()) {
+                movieEdit.setIsInColor(newIsInColor);
             }
 
+            System.out.println("Genre: ");
+            String newGenre = scanner.nextLine();
+            if (!newGenre.isEmpty()) {
+                movieEdit.setGenre(newGenre);
+            }
+            System.out.println("year: ");
+            String newYear = scanner.nextLine();
+            if (!newYear.isEmpty()) {
+                int ko = Integer.parseInt(newYear);
+                movieEdit.setYear(ko);
+                System.out.println("You did not write a number!");
+            }
+            System.out.println("Length in minutes: ");
+            String newLengthInMinutes = scanner.nextLine();
+            if (!newLengthInMinutes.isEmpty()) {
+                int minuteChange = Integer.parseInt(newLengthInMinutes);
+                movieEdit.setLengthInMinutes(minuteChange);
+                System.out.println("You did not write a number!");
+            }
+        } else {
+            System.out.println("Movie not found");
         }
 
+    }
+
+}
 
 
 //            for (Movie i : ) {

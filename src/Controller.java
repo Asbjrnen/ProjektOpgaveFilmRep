@@ -5,12 +5,16 @@ public class Controller {
         movieCollection.addMovie(movie);
     }
 
-    public void printMovieList() {
-        movieCollection.printMovieList();
+    public String printMovieList() {
+        return movieCollection.printMovieList();
     }
 
-    public void findMovie(String input) {
-        movieCollection.findMovie(input);
+    public String findMovie(String input) {
+        String printString = "";
+        for (Movie movie : movieCollection.findMovie(input)) {
+            printString += movie.toString() + "\n";
+        }
+        return printString;
     }
 
     public void removeMovie(String input) {
@@ -22,12 +26,8 @@ public class Controller {
 //    }
 
     public Movie editMovieFromList(String movieTitle) {
-        for (Movie movie : movieCollection.getMovieArrayList()){
-            if (movie.getName().equalsIgnoreCase(movieTitle)){
-                return movie;
-            }
-        }
-return null;
+        return movieCollection.editMovieFromList(movieTitle);
     }
+
 
 }
