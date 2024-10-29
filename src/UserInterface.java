@@ -55,7 +55,7 @@ public class UserInterface {
                     controller.addMovie(movie);
                 }
 
-                case 2 -> System.out.println(controller.printMovieList());
+                case 2 -> controller.printMovieList();
                 case 3 -> {
                     System.out.println("Enter title:");
                     controller.findMovie(scanner.nextLine());

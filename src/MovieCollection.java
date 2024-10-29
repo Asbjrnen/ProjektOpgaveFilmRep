@@ -22,6 +22,7 @@ public class MovieCollection {
             counter++;
             System.out.println(counter + ". " + movie);
         }
+
     }
 
     public void findMovie(String input) {
