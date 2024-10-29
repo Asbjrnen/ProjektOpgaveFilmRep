@@ -60,12 +60,7 @@ public class MovieCollection {
                 System.out.println("Title: " + i.getName());
                 String newTitle = scanner.nextLine();
                 if (!newTitle.isEmpty()) {
-                    try{
-                        i.setName(newTitle);
-                    } catch (Exception e){
-                        System.out.println("Wrong input, be more specific");
-                    }
-
+                    i.setName(newTitle);
                 }
                 System.out.println("Director: " + i.getDirector());
                 String newDirector = scanner.nextLine();
@@ -85,15 +80,24 @@ public class MovieCollection {
                 System.out.println("year: " + i.getYear());
                 String newYear = scanner.nextLine();
                 if (!newYear.isEmpty()) {
-                    int ko = Integer.parseInt(newYear);
-                    i.setYear(ko);
+                    try {
+                        int ko = Integer.parseInt(newYear);
+                        i.setYear(ko);
+                    } catch (Exception e) {
+                        System.out.println("You did not write a number!");
+                    }
 
                 }
                 System.out.println("Length in minutes: " + i.getLengthInMinutes());
                 String newLengthInMinutes = scanner.nextLine();
                 if (!newLengthInMinutes.isEmpty()) {
-                    int minuteChange = Integer.parseInt(newLengthInMinutes);
-                    i.setLengthInMinutes(minuteChange);
+                    try {
+                        int minuteChange = Integer.parseInt(newLengthInMinutes);
+                        i.setLengthInMinutes(minuteChange);
+                    } catch (Exception e){
+                        System.out.println("You did not write a number!");
+                    }
+
                 }
 
             }
