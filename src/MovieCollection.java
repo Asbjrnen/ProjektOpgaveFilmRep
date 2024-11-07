@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieCollection {
-    private List<Movie> movies = new ArrayList<>();
+    private ArrayList<Movie> movies = new ArrayList<>();
 
     public void addMovie(Movie movie) {
         movies.add(movie);
@@ -12,7 +12,7 @@ public class MovieCollection {
         movies.remove(movie);
     }
 
-    public List<Movie> getMovieCollectionList() {
+    public ArrayList<Movie> getMovieCollectionList() {
         return movies;
     }
 

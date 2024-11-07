@@ -6,6 +6,9 @@ public class Controller {
     public Controller() {
         this.movieCollection = new MovieCollection();
     }
+    public void sortTitle(){
+        movieCollection.getMovieCollectionList().sort(Movie.titleComparator);
+    }
 
     public void addMovie(String title, String director, int length, int year, String genre, boolean isColor) {
         Movie movie = new Movie(title, director, length, year, genre, isColor);

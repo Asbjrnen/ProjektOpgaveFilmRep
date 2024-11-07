@@ -1,4 +1,10 @@
+import java.util.Comparator;
+
 public class Movie {
+
+    public static Comparator<Movie> titleComparator = Comparator.comparing(Movie::getTitle)
+            .thenComparing(Movie::getYear)
+            .thenComparing(Movie::getDirector);
     private String title;
     private String director;
     private int length;
@@ -17,6 +23,12 @@ public class Movie {
 
     public String getTitle() {
         return title;
+    }
+    public String getDirector() {
+        return director;
+    }
+    public int getYear() {
+        return year;
     }
 
     @Override

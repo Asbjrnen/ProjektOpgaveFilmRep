@@ -37,9 +37,21 @@ public class UserInterface {
                 case 5 -> searchMovie();
 
                 case 6 -> exit = true;
+
+                case 7 -> sort();
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         }
+    }
+    public void sort (){
+        controller.sortTitle();
+        viewMovies();
+//        boolean sort = false;
+//        while (!sort) {
+//            System.out.println("-------------------------------------------");
+//            System.out.println("1) Sort by Title");
+//            System.out.println("2) Exit your collection");
+
     }
 
     private int getIntInput(String userInput) {
@@ -70,7 +82,7 @@ public class UserInterface {
         String genre = scanner.nextLine();
         scanner.nextLine();
 
-        boolean isColor = getIntInput("Is the movie in color?: ") == 1;
+        boolean isColor = getIntInput("Is the movie in color?: \"\\n 1 for yes or 0 for no\"") == 1;
 
         controller.addMovie(title, director, length, year, genre, isColor);
         System.out.println("Movie added successfully");
@@ -90,7 +102,7 @@ public class UserInterface {
         String genre = scanner.nextLine();
         scanner.nextLine();
 
-        boolean isColor = getIntInput("Is the movie in color?: ") == 1;
+        boolean isColor = getIntInput("Is the movie in color?: " + "\n 1 for yes or 0 for no") == 1;
 
         controller.editMovie(title, director, length, year, genre, isColor);
         System.out.println("Movie edited successfully");
