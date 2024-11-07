@@ -1,0 +1,3 @@
+qw,reee,22,201,horror,true
+qw,ewqr,22,123,ddf,true
+hej,med,20,2024,dig,true

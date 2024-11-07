@@ -30,6 +30,38 @@ public class Movie {
     public int getYear() {
         return year;
     }
+    public int getLength() {
+        return length;
+    }
+    public String getGenre() {
+        return genre;
+    }
+    public boolean isColor() {
+        return isColor;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setColor(boolean color) {
+        isColor = color;
+    }
 
     @Override
     public String toString() {

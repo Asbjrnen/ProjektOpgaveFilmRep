@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -6,12 +9,13 @@ public class UserInterface {
     private Controller controller;
     private Scanner scanner;
 
-    public UserInterface() {
+    public UserInterface() throws FileNotFoundException {
         this.controller = new Controller();
         this.scanner = new Scanner(System.in);
     }
 
-    public void startProgram() {
+    public void startProgram() throws IOException {
+        controller.readFile();
         boolean exit = false;
         while (!exit) {
             System.out.println("--------------------------------------------");
@@ -20,7 +24,8 @@ public class UserInterface {
             System.out.println("3) Delete a movie in your collection");
             System.out.println("4) View all movies in your collection");
             System.out.println("5) Search for a movie in your collection");
-            System.out.println("6) Exit your collection");
+            System.out.println("6) Sort your collection");
+            System.out.println("7) Exit your collection");
             System.out.println("--------------------------------------------");
 
 
@@ -36,14 +41,15 @@ public class UserInterface {
 
                 case 5 -> searchMovie();
 
-                case 6 -> exit = true;
+                case 6 -> sort();
 
-                case 7 -> sort();
+                case 7 -> exit = true;
+
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
-    public void sort (){
+    public void sort () throws IOException {
         controller.sortTitle();
         viewMovies();
 //        boolean sort = false;
@@ -66,7 +72,7 @@ public class UserInterface {
         }
     }
 
-    private void addMovie() {
+    private void addMovie() throws IOException {
         scanner.nextLine();
         System.out.print("Enter title: ");
         String title = scanner.nextLine();
@@ -74,41 +80,98 @@ public class UserInterface {
         System.out.print("Enter director: ");
         String director = scanner.nextLine();
 
+        System.out.print("Enter genre: ");
+        String genre = scanner.nextLine();
+
+
+        boolean isColor = getIntInput("Is the movie in color?: \"\\n 1 for yes or 0 for no\"") == 1;
+
         int length = getIntInput("Enter length in minutes: ");
 
         int year = getIntInput("Enter year of creation: ");
-
-        System.out.print("Enter genre: ");
-        String genre = scanner.nextLine();
         scanner.nextLine();
-
-        boolean isColor = getIntInput("Is the movie in color?: \"\\n 1 for yes or 0 for no\"") == 1;
 
         controller.addMovie(title, director, length, year, genre, isColor);
         System.out.println("Movie added successfully");
     }
 
-    private void editMovie() {
-        scanner.nextLine();
+    private void editMovie() throws IOException {
         System.out.print("Enter movie title to edit: ");
-        String title = scanner.nextLine();
+        String title = scanner.next();
+        int counter = 0;
 
-        System.out.print("Enter new director: ");
-        String director = scanner.nextLine();
-
-        int length = getIntInput("Enter new length in minutes: ");
-        int year = getIntInput("Enter new year of creation: ");
-        System.out.print("Enter new genre for the movie: ");
-        String genre = scanner.nextLine();
         scanner.nextLine();
+        ArrayList<Movie> movieArrayList = controller.searchMovies(title);
 
-        boolean isColor = getIntInput("Is the movie in color?: " + "\n 1 for yes or 0 for no") == 1;
 
-        controller.editMovie(title, director, length, year, genre, isColor);
-        System.out.println("Movie edited successfully");
+        if (!movieArrayList.isEmpty()) {
+            for (Movie movie : movieArrayList) {
+                counter++;
+                System.out.println(counter + ". " + movie);
+            }
+            if (movieArrayList.size() >= 2) {
+                System.out.println("Choose a number that is referring to the movie you want to edit:");
+                int input = scanner.nextInt();
+                scanner.nextLine();
+                Movie movieToEdit = movieArrayList.get(input - 1);
+
+                System.out.println("Enter the movie title you want to edit");
+                movieToEdit.setTitle(scanner.nextLine());
+
+                System.out.println("Enter the movie director you want to edit");
+                movieToEdit.setDirector(scanner.nextLine());
+
+                System.out.println("Enter the movie genre you want to edit");
+                movieToEdit.setGenre(scanner.nextLine());
+
+                System.out.println("Enter the color of the movie you want to edit, 1 for yes or 0 for no");
+                boolean color = true;
+                if (scanner.nextInt() == 1) {
+                    color = true;
+                } else {
+                    color = false;
+                }
+                movieToEdit.setColor(color);
+
+                System.out.println("Enter the movie year you want to edit");
+                movieToEdit.setYear(scanner.nextInt());
+
+                System.out.println("Enter the new length for the movie you want to edit in minutes");
+                movieToEdit.setLength(scanner.nextInt());
+
+                System.out.println("Movie edited successfully");
+            } else {
+                Movie movieToEdit = movieArrayList.getFirst();
+                System.out.println("Enter the movie title you want to edit");
+                movieToEdit.setTitle(scanner.nextLine());
+
+                System.out.println("Enter the movie director you want to edit");
+                movieToEdit.setDirector(scanner.nextLine());
+
+                System.out.println("Enter the movie genre you want to edit");
+                movieToEdit.setGenre(scanner.nextLine());
+
+                System.out.println("Enter the color of the movie you want to edit, 1 for yes or 0 for no");
+                boolean color = true;
+                if (scanner.nextInt() == 1) {
+                    color = true;
+                } else {
+                    color = false;
+                }
+                movieToEdit.setColor(color);
+
+                System.out.println("Enter the movie year you want to edit");
+                movieToEdit.setYear(scanner.nextInt());
+
+                System.out.println("Enter the new length for the movie you want to edit in minutes");
+                movieToEdit.setLength(scanner.nextInt());
+
+                System.out.println("Movie edited successfully");
+            }
+        }
     }
 
-    private void deleteMovie() {
+    private void deleteMovie() throws IOException {
         scanner.nextLine();
         System.out.print("Enter movie title to delete: ");
         String title = scanner.nextLine();
