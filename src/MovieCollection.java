@@ -1,66 +1,28 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 public class MovieCollection {
-    private ArrayList<Movie> movieArrayList = new ArrayList<Movie>();
-
-    public ArrayList<Movie> getMovieArrayList() {
-        return movieArrayList;
-    }
+    private List<Movie> movies = new ArrayList<>();
 
     public void addMovie(Movie movie) {
-        movieArrayList.add(movie);
+        movies.add(movie);
     }
 
-    public void removeMovie(Movie movie) {
-        movieArrayList.remove(movie);
+    public void deleteMovie(Movie movie) {
+        movies.remove(movie);
     }
 
-    public void printMovieList() {
-        int counter = 0;
-        for (Movie movie : movieArrayList) {
-            counter++;
-            System.out.println(counter + ". " + movie);
-        }
-
+    public List<Movie> getMovieCollectionList() {
+        return movies;
     }
 
-    public void findMovie(String input) {
-        for (Movie movie : movieArrayList) {
-            if (movie.getName().toLowerCase().contains(input)) {
-                System.out.println("Found movie!");
-                System.out.println(movie);
-            } else {
-                System.out.println("Error: movie not found, be more specific");
+    public List<Movie> searchMovies(String title) {
+        List<Movie> result = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getTitle().toLowerCase().contains(title.toLowerCase())) {
+                result.add(movie);
             }
         }
+        return result;
     }
-
-    public void removeMovieFromList(String input) {
-        for (Movie movie : movieArrayList) {
-            if (movie.getName().toLowerCase().contains(input)) {
-                System.out.println("Found movie!");
-                System.out.println(movie);
-                removeMovie(movie);
-                System.out.println("Has been removed");
-                break;
-            } else {
-                System.out.println("Error: movie not found, be more specific");
-            }
-        }
-    }
-
-    //Stop using scanner, make method in ui
-    public Movie editMovieFromList(String movieName) {
-        for (Movie movie : movieArrayList) {
-            if (movie.getName().toLowerCase().equals(movieName)) {
-                return movie;
-                }
-
-            }
-        return null;
-        }
-    }
-
-
-
+}

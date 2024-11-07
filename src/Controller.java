@@ -1,34 +1,47 @@
-public class Controller {
-    private MovieCollection movieCollection = new MovieCollection();
+import java.util.List;
 
-    public void addMovie(Movie movie) {
+public class Controller {
+    private MovieCollection movieCollection;
+
+    public Controller() {
+        this.movieCollection = new MovieCollection();
+    }
+
+    public void addMovie(String title, String director, int length, int year, String genre, boolean isColor) {
+        Movie movie = new Movie(title, director, length, year, genre, isColor);
         movieCollection.addMovie(movie);
     }
 
-    public void printMovieList() {
-        movieCollection.printMovieList();
-    }
+    public void editMovie(String title, String newDirector, int newLength, int newYear, String newGenre, boolean newIsColor) {
+        List<Movie> foundMovies = movieCollection.searchMovies(title);
 
-    public void findMovie(String input) {
-        movieCollection.findMovie(input);
-    }
+        if (!foundMovies.isEmpty()) {
+            Movie movie = foundMovies.get(0);
+            movieCollection.deleteMovie(movie);
 
-    public void removeMovie(String input) {
-        movieCollection.removeMovieFromList(input);
-    }
-
-//    public void editMovieFromList(String input) {
-//        movieCollection.editMovieFromList(input);
-//    }
-
-    public Movie editMovieFromList(String movieTitle) {
-        for (Movie movie : movieCollection.getMovieArrayList()){
-            if (movie.getName().equalsIgnoreCase(movieTitle)){
-                return movie;
-            }
+            Movie updatedMovie = new Movie(title, newDirector, newLength, newYear, newGenre, newIsColor);
+            movieCollection.addMovie(updatedMovie);
+        } else {
+            System.out.println("No movie found with the title: " + title);
         }
-return null;
     }
 
+    public void deleteMovie(String title) {
+        List<Movie> foundMovies = movieCollection.searchMovies(title);
 
+        if (!foundMovies.isEmpty()) {
+            Movie movieToDelete = foundMovies.get(0);
+            movieCollection.deleteMovie(movieToDelete);
+        } else {
+            System.out.println("No movie found with the title: " + title);
+        }
+    }
+
+    public List<Movie> getAllMovies() {
+        return movieCollection.getMovieCollectionList();
+    }
+
+    public List<Movie> searchMovies(String title) {
+        return movieCollection.searchMovies(title);
+    }
 }
