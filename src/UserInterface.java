@@ -52,11 +52,6 @@ public class UserInterface {
     public void sort () throws IOException {
         controller.sortTitle();
         viewMovies();
-//        boolean sort = false;
-//        while (!sort) {
-//            System.out.println("-------------------------------------------");
-//            System.out.println("1) Sort by Title");
-//            System.out.println("2) Exit your collection");
 
     }
 

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
-    File file = new File("MovieList.txt");
-    Scanner scanner = new Scanner(file);
+    private File file = new File("MovieList.txt");
+    private Scanner scanner = new Scanner(file);
 
     public FileHandler() throws FileNotFoundException {
     }
