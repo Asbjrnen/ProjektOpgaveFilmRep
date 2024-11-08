@@ -1,3 +1,7 @@
+package data_source;
+
+import models.Movie;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
