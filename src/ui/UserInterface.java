@@ -82,7 +82,7 @@ public class UserInterface {
         String genre = scanner.nextLine();
 
 
-        boolean isColor = getIntInput("Is the movie in color?: \"\\n 1 for yes or 0 for no\"") == 1;
+        boolean isColor = getIntInput("Is the movie in color?: \"\\n 1 for motionist or 0 for konkurrencesvømmer\"") == 1;
 
         int length = getIntInput("Enter length in minutes: ");
 
